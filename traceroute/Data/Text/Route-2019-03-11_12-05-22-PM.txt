@@ -1,0 +1,22 @@
+Tracing route to  [198.252.160.30] 
+over a maximum of 30 hops: 2019-03-11 12:05:18
+ 1   <1 ms   <1 ms   <1 ms IAIN-AW17R4 [172.28.123.209]
+ 2    *       *       *    Request timed out.
+ 3   56 ms   29 ms   24 ms RESQ (DG) [91.235.56.1]
+ 4   65 ms   17 ms   25 ms 89.147-252-62.static.virginmediabusiness.co.uk [62.252.147.89]
+ 5   28 ms   39 ms   34 ms cdif-lam-4-tenge73-620.network.virginmedia.net [62.252.133.159]
+ 6   49 ms   41 ms   34 ms cdif-core-2a-xe-110-0.network.virginmedia.net [195.182.172.45]
+ 7    *       *       *    Request timed out.
+ 8    *       *       *    Request timed out.
+ 9   37 ms   61 ms   35 ms m686-mp2.cvx1-b.lis.dial.ntli.net [62.254.42.174]
+10    *       *       *    Request timed out.
+11  115 ms  129 ms  111 ms us-nyc01b-rd2-ae9-0.aorta.net [84.116.140.170]
+12  169 ms  129 ms  136 ms us-nyc01b-ri2-ae3-0.aorta.net [84.116.137.194]
+13  159 ms  132 ms  192 ms lag-5.ear3.NewYork1.Level3.net [4.68.72.9]
+14    *       *       *    Request timed out.
+15  159 ms  132 ms  126 ms 4.31.43.210
+16    *       *       *    Request timed out.
+17  154 ms  156 ms  176 ms 198.252.160.30
+18  137 ms  134 ms  150 ms 198.252.160.30
+
+Trace Complete.
