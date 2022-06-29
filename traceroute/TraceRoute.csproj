@@ -47,17 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRequestFileWriter.cs" />
-    <Compile Include="IRequestWriter.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Output\RequestConsoleWriter.cs" />
-    <Compile Include="Output\RequestTextWriter.cs" />
-    <Compile Include="Output\RequestXmlWriter.cs" />
-    <Compile Include="Output\TraceConsoleWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +67,10 @@
     <Folder Include="Data\Xml\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TracingHandlers\TracingHandlers.csproj">
+      <Project>{a3aaa16c-f4da-40a7-b6cc-f97089dc6713}</Project>
+      <Name>TracingHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tracing\Tracing.csproj">
       <Project>{a1b2b74a-851c-4858-a7fd-8d4c8b798791}</Project>
       <Name>Tracing</Name>

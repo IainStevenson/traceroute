@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceRoute.Extensions", "Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracing", "Tracing\Tracing.csproj", "{A1B2B74A-851C-4858-A7FD-8D4C8B798791}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TracingHandlers", "TracingHandlers\TracingHandlers.csproj", "{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,18 @@ Global
 		{A1B2B74A-851C-4858-A7FD-8D4C8B798791}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A1B2B74A-851C-4858-A7FD-8D4C8B798791}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1B2B74A-851C-4858-A7FD-8D4C8B798791}.Release|x86.Build.0 = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Debug|x86.Build.0 = Debug|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3AAA16C-F4DA-40A7-B6CC-F97089DC6713}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
