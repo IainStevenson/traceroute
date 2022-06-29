@@ -1,6 +1,7 @@
 ﻿#region Using Declarations
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace TraceRoute
 {
     internal class Program
     {
+
+        private static List<IRequestWriter> _handlers = new List<IRequestWriter>();
+
         private static void Main(string[] args)
         {
             var ipDefaultGateway = GetDefaultGateway();
@@ -26,6 +30,10 @@ namespace TraceRoute
                 var resolver = GetLocalAddressResolver();
                 var destinations = args.ToList();
                 var targets = new IPAddresses { Addresses = destinations };
+                _handlers.Add(new RouteDataTraceWriter());
+                _handlers.Add(new RouteDataConsoleWriter());
+                _handlers.Add(new RouteDataXmlWriter(new DirectoryInfo(Settings.Default.XmlDataPath)));
+                _handlers.Add(new RouteDataTextWriter(new DirectoryInfo(Settings.Default.TextDataPath)));
                 Console.Title = "TraceRoute - Press escape key to stop";
                 do
                 {
@@ -36,23 +44,31 @@ namespace TraceRoute
                             
                             foreach (var address in targets.Addresses)
                             {
+
+                                try
+                                {
+                                    var ipHostEntry = Dns.GetHostEntry(address);
+                                    
+
+
+
+                                    var ipAddress = ipHostEntry.AddressList[0];
+
+                                    var tracer = new TraceRoute(resolver);
+                                    var request = tracer.ProcessRequest(ipAddress, ipDefaultGateway,
+                                                                         Settings.Default.MaxHops,
+                                                                         Settings.Default.Timeout);
+                                    foreach(var handler in _handlers)
+                                    {
+                                        handler.Write(request);
+                                    }
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
                             
-                                var tracer = new TraceRoute(resolver);
-                                var ipAddressOrHostName = address;
-                                var ipHostEntry = Dns.GetHostEntry(ipAddressOrHostName);
-                                
-
-                                var ipAddress = ipHostEntry.AddressList[0];
-
-                                var request = tracer.ProcessRequest(ipAddress, ipDefaultGateway,
-                                                                     Settings.Default.MaxHops,
-                                                                     Settings.Default.Timeout);
-
-                                new RouteDataTraceWriter().Write(request);
-                                new RouteDataConsoleWriter().Write(request);
-                                new RouteDataXmlWriter(new DirectoryInfo(Settings.Default.XmlDataPath)).Write(request);
-                                new RouteDataTextWriter(new DirectoryInfo(Settings.Default.TextDataPath)).Write(request);
-
                             }
                         }
                         catch (Exception e)
@@ -86,23 +102,18 @@ namespace TraceRoute
                 resolver.Addresses.Add(new IPAddressHost
                 {
                     Address = IPAddress.Parse("192.168.0.1"),
-                    HostName = "Rhydyfallen (DG)"
+                    HostName = "Default Gateway"
                 });
                 resolver.Addresses.Add(new IPAddressHost
                 {
-                    Address = IPAddress.Parse("10.0.0.1"),
-                    HostName = "Router -> BT"
+                    Address = IPAddress.Parse("192.168.1.1"),
+                    HostName = "Router -> EE Wan 1"
                 });
                 resolver.Addresses.Add(new IPAddressHost
                 {
-                    Address = IPAddress.Parse("172.16.0.1"),
-                    HostName = "Router -> RESQ "
-                });
-                resolver.Addresses.Add(new IPAddressHost
-                {
-                    Address = IPAddress.Parse("91.235.56.1"),
-                    HostName = "RESQ (DG)"
-                });
+                    Address = IPAddress.Parse("172.16.0.4"),
+                    HostName = "Router -> EE Wan 2 "
+                });                
             }
             var ds = new DataContractSerializer(typeof(IPAddressResolver));
             var ms = new MemoryStream();
