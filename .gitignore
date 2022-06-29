@@ -261,3 +261,6 @@ __pycache__/
 *.pyc
 /traceroute/Data/Text
 /traceroute/Data/Xml
+/Data/Json
+/Data/Text
+/Data/Xml
